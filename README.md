@@ -1,2 +1,2 @@
-# World-Happy-Project
+# World-Happiness-Project
 Creating and Presenting world happiness Data using JavaScript and other front end resources.
