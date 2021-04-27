@@ -1,0 +1,31 @@
+.navbar {
+    background-color: black;
+    color: black;
+}
+
+.btn {
+    background-color: black;
+    border-color: lightblue;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+body {
+    background-image: url("data/worldmap.png");
+}
+
+.dropdown-item {
+    text-align: center;
+}
+
+.container {
+    background-color: white;
+    fill-opacity: 0.05;
+}
+
+
+  
