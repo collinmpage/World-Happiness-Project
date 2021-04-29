@@ -59,7 +59,7 @@ def home():
         dict_2015["column3"] = column3
         data_2015.append(dict_2015)
 
-    return jsonify(data_2015)
+    return render_template("index.html", jsonify(data_2015))
 
 
 if __name__ == "__main__":
