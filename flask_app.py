@@ -10,7 +10,7 @@ from flask import Flask, jsonify, render_template, redirect
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///data.sqlite")
+engine = create_engine("sqlite:///world_happiness.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -18,11 +18,11 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save reference to the table
-table_2015 = Base.classes.cleaned_info_2015
-table_2016 = Base.classes.cleaned_info_2016
-table_2017 = Base.classes.cleaned_info_2017
-table_2018 = Base.classes.cleaned_info_2018
-table_2019 = Base.classes.cleaned_info_2019
+table_2015 = Base.classes.data_2015
+table_2016 = Base.classes.data_2016
+table_2017 = Base.classes.data_2017
+table_2018 = Base.classes.data_2018
+table_2019 = Base.classes.data_2019
 
 #################################################
 # Flask Setup
@@ -42,7 +42,7 @@ def home():
 
     """Return a list of data"""
     # Query all tables data
-    results_2015 = session.query(table_2015.column_wanted).all()
+    results_2015 = session.query(table_2015.["Overall Rank"], table_2015.[""] ).all()
     results_2016 = session.query(table_2016.column_wanted).all()
     results_2017 = session.query(table_2017.column_wanted).all()
     results_2018 = session.query(table_2018.column_wanted).all()
