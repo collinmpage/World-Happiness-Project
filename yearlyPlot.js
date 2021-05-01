@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 900 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -13,11 +13,17 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.json("", function(data) {
+d3.csv("Cleaned_Data/cleaned_all.csv", function(data) {
 
     // List of groups (here I have one group per column)
-    var allGroup = d3.map(data, function(d){return(d.name)}).keys()
+    var allGroup = d3.map(data, function(d){return(d.countryOrRegion)}).keys()
 
+    // add the country to the name
+    d3.select("#countryname")
+      .selectAll()
+      .enter()
+      .text(d => d.countryOrRegion)
+      
     // add the options to the button
     d3.select("#selectButton")
       .selectAll('myOptions')
@@ -38,11 +44,11 @@ d3.json("", function(data) {
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(7));
+      .call(d3.axisBottom(x).ticks(5));
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([0, d3.max(data, function(d) { return +d.n; })])
+      .domain([0, d3.max(data, function(d) { return +d.happinessScore; })])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
@@ -51,10 +57,10 @@ d3.json("", function(data) {
     var line = svg
       .append('g')
       .append("path")
-        .datum(data.filter(function(d){return d.name==allGroup[0]}))
+        .datum(data.filter(function(d){return d.countryOrRegion==allGroup[0]}))
         .attr("d", d3.line()
           .x(function(d) { return x(d.year) })
-          .y(function(d) { return y(+d.n) })
+          .y(function(d) { return y(+d.happinessScore) })
         )
         .attr("stroke", function(d){ return myColor("valueA") })
         .style("stroke-width", 4)
@@ -64,7 +70,7 @@ d3.json("", function(data) {
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.filter(function(d){return d.name==selectedGroup})
+      var dataFilter = data.filter(function(d){return d.countryOrRegion==selectedGroup})
 
       // Give these new data to update line
       line
@@ -73,7 +79,7 @@ d3.json("", function(data) {
           .duration(1000)
           .attr("d", d3.line()
             .x(function(d) { return x(d.year) })
-            .y(function(d) { return y(+d.n) })
+            .y(function(d) { return y(+d.happinessScore) })
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
     }
