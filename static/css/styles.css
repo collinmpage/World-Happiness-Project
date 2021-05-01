@@ -1,12 +1,12 @@
 .navbar {
-    background-color: black;
-    color: black;
+    background-color:  rgb(216,209,163);
+    border: 2px solid rgb(126,136,151);
 }
 
 .btn {
-    background-color: black;
-    border-color: lightblue;
-    color: white;
+    background-color: rgb(133,135,110);
+    border-color: white;
+    color: rgb(235,233,225);
 }
 
 h1 {
@@ -15,7 +15,7 @@ h1 {
 }
 
 body {
-    background-image: url("data/worldmap.png");
+    background-image: url("worldmap.png");
     background-size: cover;
 }
 
@@ -24,14 +24,15 @@ body {
 }
 
 .container {
-    background-color: rgb(252, 253, 245);
+    background-color: rgb(216,230,236);
     border-radius: 25px;
-    border: 2px solid black;
+    border: 2px solid rgb(126,136,151);
     padding: 20px;
 }
 
 img {
-    border-radius: 8px;
+    border-radius: 25px;
+    border-color:rgb(126,136,151);
     max-width: 100%;
     max-height: 100%;
     display: block;
@@ -44,5 +45,8 @@ img {
     --animate-delay: 0.9s;
 }
 
+table, th, td { 
+    border: 1px solid black; 
+}
 
   

@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<link href="styles.css" rel="stylesheet">
+<link href="../static/css/styles.css?q=1280549780" rel="stylesheet">
 
 <!-- link to animation css library -->
 <link
@@ -17,44 +17,123 @@ rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 />
 
-<!-- Header and NavBar-->
 </head>
 
-<!-- link to animate css library -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <a class="btn btn-primary" href="/" role="button">Homepage</a>
 
-    <nav class="navbar navbar-expand-lg">
-        <a class="btn btn-primary" href="index.html" role="button">Homepage</a>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Views
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="happiness_by_county.html">Happiness By Country</a>
-                      <a class="dropdown-item" href="the_last_5_years.html">Happiness: The Last 5 Years</a>
-                      <a class="dropdown-item" href="2015-Raw-Data">2015 Raw Data</a>
-                    </div>
-                  </div>
-            </li>
-          </ul>
-        </div>
-    </nav>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Views
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/happiness_by_country">Happiness By Country</a>
+                <a class="dropdown-item" href="/the_last_5_years">Happiness: The Last 5 Years</a>
+                <a class="dropdown-item" href="/data">Raw Data</a>
+              </div>
+            </div>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <body>
-    <div class="container text-center">
+
+      <div class="container text-center">
         <h1 class="display-1">World Happiness Data</h1>
+        <div class = "container">
+          <h2>Search for Country / Year</h2>
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Country..">
+          <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search for Year..">
+        </div>
         <div>
-          <ul style="list-style: none;">
-    
-              {% for item in Data %}
-                <li>{{ overallRank }}</li>
-                <li>{{ countryOrRegion }}</li>
+          <table id = "myTable">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Country</th>
+                <th>Happiness Score</th>
+                <th>GDP Per Capita</th>
+                <th>Social Support</th>
+                <th>Life Expectancy</th>
+                <th>Freedom</th>
+                <th>Generosity</th>
+                <th>Perception of Government Corruption</th>
+                <th>Year</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in data %} 
+                <tr>
+                  <td>{{row[0]}}</td>
+                  <td>{{row[1]}}</td>
+                  <td>{{row[2]}}</td>
+                  <td>{{row[3]}}</td>
+                  <td>{{row[4]}}</td>
+                  <td>{{row[5]}}</td>
+                  <td>{{row[6]}}</td>
+                  <td>{{row[7]}}</td>
+                  <td>{{row[8]}}</td>
+                  <td>{{row[9]}}</td>
+                </tr>
               {% endfor %}
-              
-          </ul>
+            </tbody>
+          </table>
         </div>
     </div>
 </body>
+
+
+
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  </script>
+
+<script>
+  function myFunction2() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput2");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[9];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  </script>
