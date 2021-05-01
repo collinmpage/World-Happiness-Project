@@ -23,13 +23,22 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 #################################################
-# Createe class to get data
+# Create class to get data
 #################################################
 class Data(db.Model):
-    __tablename__ = 'data'
+    __tablename__ = 'data_all'
     
-    overallRank = db.Column(db.Integer, primary_key = True)
-    countryOrRegion = db.Column(db.String(50))
+    id = db.Column(db.Integer, primary_key = True)
+    overall_rank = db.Column(db.String(50))
+    country_or_region = db.Column(db.String(50))
+    happiness_score = db.Column(db.Numeric(2,2))
+    gdp_per_capita = db.Column(db.Numeric(2,2))
+    social_support = db.Column(db.Numeric(2,2))
+    life_expectancy = db.Column(db.Numeric(2,2))
+    freedom = db.Column(db.Numeric(2,2))
+    generosity = db.Column(db.Numeric(2,2))
+    perception_of_government_corruption = db.Column(db.Numeric(2,2))
+    year = db.Column(db.String(4))
 
 
 #################################################
@@ -38,16 +47,18 @@ class Data(db.Model):
 
 @app.route("/data")
 def data():
-    results = db.session.query(data.overallRank, data.countryOrRegion).all()
 
+    results = db.session.query(Data.overall_rank, Data.country_or_region, Data.happiness_score, 
+    Data.gdp_per_capita, Data.social_support, Data.life_expectancy, Data.freedom, Data.generosity, 
+    Data.perception_of_government_corruption, Data.year).all()
+
+    print(results[0])
 
     return render_template('data.html', data = results)
 
 
 
-
-
-#################################################
+################################################
 # Create home page
 #################################################
 @app.route("/")
@@ -61,7 +72,7 @@ def home():
 
 @app.route("/happiness_by_country")
 def country():
-    return render_template("happiness_by_country.html")
+    return render_template("happiness_by_county.html")
 
 #################################################
 # Create visualization page 2
@@ -149,5 +160,5 @@ def years():
 #     return render_template("index.html", jsonify(data_2015))
 
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
