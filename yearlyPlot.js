@@ -16,13 +16,14 @@ var svg = d3.select("#my_dataviz")
 d3.csv("Cleaned_Data/cleaned_all.csv", function(data) {
 
     // List of groups (here I have one group per column)
-    var allGroup = d3.map(data, function(d){return(d.countryOrRegion)}).keys()
+    var allGroup = d3.map(data, function(d){return(d.country_or_region)}).keys()
 
     // add the country to the name
     d3.select("#countryname")
       .selectAll()
+      .data(allGroup)
       .enter()
-      .text(d => d.countryOrRegion)
+      .text(d => d.country_or_region)
       
     // add the options to the button
     d3.select("#selectButton")
@@ -33,14 +34,9 @@ d3.csv("Cleaned_Data/cleaned_all.csv", function(data) {
       .text(function (d) { return d; }) // text showed in the menu
       .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-    // A color scale: one color for each group
-    var myColor = d3.scaleOrdinal()
-      .domain(allGroup)
-      .range(d3.schemeSet2);
-
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-      .domain(d3.extent(data, function(d) { return d.year; }))
+      .domain([2015, 2019])
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -48,7 +44,7 @@ d3.csv("Cleaned_Data/cleaned_all.csv", function(data) {
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([0, d3.max(data, function(d) { return +d.happinessScore; })])
+      .domain([0, d3.max(data, function(d) { return +d.happiness_score; })])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
@@ -57,31 +53,49 @@ d3.csv("Cleaned_Data/cleaned_all.csv", function(data) {
     var line = svg
       .append('g')
       .append("path")
-        .datum(data.filter(function(d){return d.countryOrRegion==allGroup[0]}))
+        .datum(data.filter(function(d){return d.country_or_region==allGroup[0]}))
         .attr("d", d3.line()
-          .x(function(d) { return x(d.year) })
-          .y(function(d) { return y(+d.happinessScore) })
+          .x(function(d) { return x(+d.year) })
+          .y(function(d) { return y(+d.happiness_score) })
         )
-        .attr("stroke", function(d){ return myColor("valueA") })
+        .attr("stroke", "black")
         .style("stroke-width", 4)
         .style("fill", "none")
 
+    // Initialize dots with group a
+    var dot = svg
+      .selectAll('circle')
+      .data(data)
+      .enter()
+      .append('circle')
+        .attr("cx", function(d) { return x(+d.year) })
+        .attr("cy", function(d) { return y(+d.happiness_score) })
+        .attr("r", 7)
+        .style("fill", "#69b3a2")
+    
     // A function that update the chart
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.filter(function(d){return d.countryOrRegion==selectedGroup})
+      var dataFilter = data.filter(function(d){return d.country_or_region==selectedGroup})
 
       // Give these new data to update line
       line
-          .datum(dataFilter)
-          .transition()
-          .duration(1000)
-          .attr("d", d3.line()
-            .x(function(d) { return x(d.year) })
-            .y(function(d) { return y(+d.happinessScore) })
-          )
-          .attr("stroke", function(d){ return myColor(selectedGroup) })
+        .datum(dataFilter)
+        .transition()
+        .duration(1000)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(+d.happiness_score) })
+        )
+        .attr("stroke", "black")
+      
+      dot
+        .data(dataFilter)
+        .transition()
+        .duration(1000)
+          .attr("cx", function(d) { return x(+d.year) })
+          .attr("cy", function(d) { return y(+d.happiness_score) })
     }
 
     // When the button is changed, run the updateChart function
@@ -91,6 +105,7 @@ d3.csv("Cleaned_Data/cleaned_all.csv", function(data) {
         // run the updateChart function with this selected option
         update(selectedOption)
     })
+
 
 })
 
