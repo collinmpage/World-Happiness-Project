@@ -1,4 +1,4 @@
-Overall Rank,Country or Region,Happiness Score,GDP per Capita,Social Support (Family),Life Expectancy,Freedom,Generosity,Trust (Perception of Government Corruption)
+overall_rank,country_or_region,happiness_score,gdp_per_capita,social_support,life_expectancy,freedom,generosity,perception_of_government_corruption
 1,Finland,7.632000000000001,1.305,1.5919999999999999,0.8740000000000001,0.6809999999999999,0.20199999999999999,0.39299999999999996
 2,Norway,7.593999999999999,1.456,1.5819999999999999,0.861,0.6859999999999999,0.28600000000000003,0.34
 3,Denmark,7.555,1.351,1.59,0.868,0.6829999999999999,0.284,0.408
