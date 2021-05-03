@@ -15,7 +15,7 @@ var myMap = L.map("map", {
   }).addTo(myMap);
   
   // Load in geojson data
-  var geoData = "static/data/Median_Household_Income_2016.geojson";
+  var geoData = "../../Cleaned_Data/countries.geojson";
   
   var geojson;
   
@@ -26,7 +26,7 @@ var myMap = L.map("map", {
     geojson = L.choropleth(data, {
   
       // Define what  property in the features to use
-      valueProperty: "MHI2016",
+      valueProperty: "gdp_md_est",
   
       // Set color scale
       scale: ["#ffffb2", "#b10026"],
@@ -45,8 +45,8 @@ var myMap = L.map("map", {
   
       // Binding a pop-up to each layer
       onEachFeature: function(feature, layer) {
-        layer.bindPopup("Zip Code: " + feature.properties.ZIP + "<br>Median Household Income:<br>" +
-          "$" + feature.properties.MHI2016);
+        layer.bindPopup("Zip Code: " + feature.properties.economy + "<br>Median Household Income:<br>" +
+          "$" + feature.properties.gdp_md_est);
       }
     }).addTo(myMap);
   
