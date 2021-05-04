@@ -20,35 +20,46 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 </head>
 
 <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <a class="btn btn-primary" href="/" role="button">Homepage</a>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Views
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="/happiness_by_country">Happiness By Country</a>
-                      <a class="dropdown-item" href="/the_last_5_years">Happiness: The Last 5 Years</a>
-                      <a class="dropdown-item" href="/data">Raw Data</a>
-                    </div>
-                  </div>
-            </li>
-          </ul>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg">
+  <a class="btn btn-primary" href="/" role="button">Homepage</a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Views
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/happiness_by_country">Happiness By Country</a>
+                <a class="dropdown-item" href="/the_last_5_years">Happiness: The Last 5 Years</a>
+                <a class="dropdown-item" href="/data">Raw Data</a>
+                <a class="dropdown-item" href="/drews_page">Drew's Data</a>
+              </div>
+            </div>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 
 <!-- Start of body -->
 <body>
-
-    <h1 class="display-1 animate__animated animate__slideInDown">World Happiness Project</h1>
+  <div class = "container-fluid">
+    <div class = "row">
+      <div class = "col-sm-2">
+        <img src = "../static/css/smile1.jpg" class = "animate__animated animate__slideInDown">
+      </div>
+      <div class = "col">
+        <h1 class="display-1 animate__animated animate__slideInDown">World Happiness Project</h1>
+      </div>
+      <div class = "col-sm-2">
+        <img src = "../static/css/smile1.jpg" class = "animate__animated animate__slideInDown">
+      </div>
+    </div>
+  </div>
 
 <!-- Container for information and images -->
-    <div class="container">
+    <div class="container animate__animated animate__fadeInUp">
       <div class="row">
         <div class="col">
           <h1>Context</h1>
@@ -62,9 +73,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
               – describe how measurements of well-being can be used effectively to assess the progress of nations. The reports review the 
               state of happiness in the world today and show how the new science of happiness explains personal and national variations in happiness.</p>
         </div>
-        <!-- <div class="col">
-          <img src = "../static/css/smile1.jpg">
-        </div> -->
       </div>
       <div class="row">
         <div class="col">
@@ -80,9 +88,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
             hypothetical country that has values equal to the world’s lowest national averages for each of the six factors. 
             They have no impact on the total score reported for each country, but they do explain why some countries rank higher than others.</p>
         </div>
-        <!-- <div class="col">
-          <img src = "../static/css/smile2.jpg">
-        </div> -->
+        <div class = "col-sm-4">
+          <img src = "../static/css/olaf.gif" class = "animate__animated animate__fadeInUp">
+        </div>
         <div class="row">
           <div class="col">
             <h1>Inspiration</h1>
