@@ -61,6 +61,7 @@ d3.csv("../Cleaned_Data/cleaned_all.csv", function(allData) {
     .domain([0, d3.max(allData.filter(function(d){return d.country_or_region==allGroup[0]}), d => d.overall_rank)])
     .range([ height, 0 ]);
   svg.append("g")
+    .classed("y-axis", true)
     .call(d3.axisLeft(y));
 
   // Y-axis label
@@ -102,12 +103,6 @@ d3.csv("../Cleaned_Data/cleaned_all.csv", function(allData) {
   var toolTip = d3.select("#chart")
     .append("div")
     .classed("tooltip", true)
-    // .style("opacity", 0)
-    // .style("background-color", "white")
-    // .style("border", "solid")
-    // .style("border-width", "2px")
-    // .style("border-radius", "5px")
-    // .style("padding", "5px")
 
   // Create "mouseover" event listener to display tooltip
   circles.on("mouseover", function(d) {
@@ -146,6 +141,9 @@ d3.csv("../Cleaned_Data/cleaned_all.csv", function(allData) {
     y = d3.scaleLinear()
       .domain([0, d3.max(dataFilter, d => d.overall_rank)])
       .range([ height, 0 ]);
+    svg.select(".y-axis")
+      .selectAll("g")
+      .remove()
     svg.append("g")
       .call(d3.axisLeft(y));
 
