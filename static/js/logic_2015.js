@@ -1,7 +1,7 @@
 // Creating map object
 var myMap = L.map("map", {
-    center: [34.0522, -118.2437],
-    zoom: 8
+    center: [35.5204, -22],
+    zoom: 3
   });
   
   // Adding tile layer
@@ -15,7 +15,7 @@ var myMap = L.map("map", {
   }).addTo(myMap);
   
   // Load in geojson data
-  var geoData = "../../Cleaned_Data/countries.geojson";
+  var geoData = "../../Cleaned_Data/json_2015.geojson";
   
   var geojson;
   
@@ -26,13 +26,13 @@ var myMap = L.map("map", {
     geojson = L.choropleth(data, {
   
       // Define what  property in the features to use
-      valueProperty: "gdp_md_est",
+      valueProperty: "overall_rank",
   
       // Set color scale
-      scale: ["#ffffb2", "#b10026"],
+      scale: ["#ff0000", "#0000ff"],
   
       // Number of breaks in step range
-      steps: 10,
+      steps: 100,
   
       // q for quartile, e for equidistant, k for k-means
       mode: "q",
@@ -45,8 +45,8 @@ var myMap = L.map("map", {
   
       // Binding a pop-up to each layer
       onEachFeature: function(feature, layer) {
-        layer.bindPopup("Zip Code: " + feature.properties.economy + "<br>Median Household Income:<br>" +
-          "$" + feature.properties.gdp_md_est);
+        layer.bindPopup("Overall Rank: " + feature.properties.overall_rank + "<br>Happiness Score<br>" +
+           + feature.properties.happiness_score);
       }
     }).addTo(myMap);
   
