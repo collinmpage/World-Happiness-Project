@@ -15,7 +15,7 @@ var myMap = L.map("map", {
   }).addTo(myMap);
   
   // Load in geojson data
-  var geoData = "../../Cleaned_Data/json_2015.geojson";
+  var geoData = "../../Cleaned_Data/test_json_2019.geojson";
   
   var geojson;
   
@@ -25,8 +25,8 @@ var myMap = L.map("map", {
     // Create a new choropleth layer
     geojson = L.choropleth(data, {
   
-      // Define what  property in the features to use
-      valueProperty: "overall_rank",
+      // Define what property in the features to use
+      valueProperty: "pop_est",
   
       // Set color scale
       scale: ["#ff0000", "#0000ff"],
