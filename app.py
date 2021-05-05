@@ -82,6 +82,13 @@ def country():
 def years():
     return render_template("the_last_5_years.html")
 
+#################################################
+# Create visualization page 2
+#################################################
+
+@app.route("/drews_page")
+def drew():
+    return render_template("drews_page.html")
 
 
 
