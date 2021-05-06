@@ -13,7 +13,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("Cleaned_Data/cleaned_all.csv", function(allData) {
+d3.csv("static/cleaned_all.csv", function(allData) {
   // create date parser
   var dateParser = d3.timeParse("%Y");
 
