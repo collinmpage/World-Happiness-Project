@@ -1,4 +1,5 @@
 import os
+import csv
 from flask import (
     Flask,
     render_template,
@@ -80,6 +81,46 @@ def country():
 
 @app.route("/the_last_5_years")
 def years():
+    # with open('.Cleaned_Data/cleaned_all.csv') as csv_file:
+
+    #     data = csv.reader(csv_file, delimiter=',')
+
+    #     first_line = True
+
+    #     data = []
+
+    #     for row in data:
+    #         if not first_line:
+    #             data.append({
+    #                 "id": row[0],
+    #                 "overall_rank":[1],
+    #                 "country_or_region":[2],
+    #                 "happiness_score":[3],
+    #                 "gdp_per_capita":[4],
+    #                 "social_support":[5],
+    #                 "life_expectancy":[6],
+    #                 "freedom":[7],
+    #                 "generosity":[8],
+    #                 "perception_of_government_corruption":[6],
+    #                 "year":[6],
+    #             })
+
+
+    # with open('.data/places.csv') as csv_file:
+    # data = csv.reader(csv_file, delimiter=',')
+    # first_line = True
+    # places = []
+    # for row in data:
+    #   if not first_line:
+    #     places.append({
+    #       "city": row[0],
+    #       "attraction": row[1],
+    #       "gif_url": row[2]
+    #     })
+    #   else:
+    #     first_line = False
+
+
     return render_template("the_last_5_years.html")
 
 #################################################
