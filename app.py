@@ -91,7 +91,13 @@ def years():
 def drew():
     return render_template("drews_page.html")
 
+#################################################
+# test
+#################################################
 
+@app.route("/test")
+def test():
+    return render_template("test.html")
 
 
 
