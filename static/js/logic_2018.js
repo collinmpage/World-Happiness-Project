@@ -15,7 +15,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(myMap);
 
 // Load in geojson data
-var geoData = "../../Cleaned_Data/json_2015.geojson";
+var geoData = "../../Cleaned_Data/json_2018.geojson";
 
 var geojson;
 
