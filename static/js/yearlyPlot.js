@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 30, right: 30, bottom: 30, left: 50},
+var margin = {top: 30, right: 30, bottom: 30, left: 60},
   width = 700 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
@@ -29,15 +29,6 @@ d3.csv("static/cleaned_all.csv", function(allData) {
   // var countries_sorted = allGroup.sort()
   // console.log(countries_sorted)
 
-  // // Set default country name
-  // d3.select("#countryname")
-  //   .selectAll('div')
-  //     .data(allData)
-  //   .enter()
-  //     .append('text')
-  //   .text(d => d.country_or_region[0])
-    // Want text to say [Country] was ranked #[overall_rank] in 2019!
-
   // Add the options to the button
   d3.select("#selectButton")
     .selectAll('myOptions')
@@ -54,6 +45,7 @@ d3.csv("static/cleaned_all.csv", function(allData) {
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
+    .style("font", "14px sans-serif")
     .call(d3.axisBottom(x).ticks(5));
 
   // Add Y axis
@@ -62,6 +54,7 @@ d3.csv("static/cleaned_all.csv", function(allData) {
     .range([ height, 0 ]);
   svg.append("g")
     .classed("y-axis", true)
+    .style("font", "14px sans-serif")
     .call(d3.axisLeft(y));
 
   // Y-axis label
@@ -70,6 +63,7 @@ d3.csv("static/cleaned_all.csv", function(allData) {
     .attr("y", 0 - margin.left)
     .attr("x", 0 - (height / 2))
     .attr("dy", "1em")
+    .style("font", "20px sans-serif")
     .classed("axis-text", true)
     .text("Overall Rank");
 
@@ -82,7 +76,7 @@ d3.csv("static/cleaned_all.csv", function(allData) {
         .x(function(d) { return x(d.year) })
         .y(function(d) { return y(d.overall_rank) })
       )
-      .attr("stroke", "black")
+      .attr("stroke", "#b30059")
       .style("stroke-width", 4)
       .style("fill", "none")
 
@@ -95,12 +89,12 @@ d3.csv("static/cleaned_all.csv", function(allData) {
     .attr("cx", function(d) { return x(d.year) })
     .attr("cy", function(d) { return y(d.overall_rank) })
     .attr("r", 8)
-    .style("fill", "#69b3a2")
+    .style("fill", "#ff80bf")
     .attr("stroke-width", "1")
-    .attr("stroke", "black");
+    .attr("stroke", "#ff0080");
 
   // Add tooltip
-  var toolTip = d3.select("#chart")
+  var toolTip = svg
     .append("div")
     .classed("tooltip", true)
 
@@ -128,15 +122,6 @@ d3.csv("static/cleaned_all.csv", function(allData) {
     // Create new data with the selection?
     var dataFilter = allData.filter(function(d){return d.country_or_region==selectedGroup})
 
-    // // update the country name selected
-    // d3.select("#countryname")
-    //   .selectAll('text')
-    //     .data(dataFilter)
-    //   .enter()
-    //     .append('text')
-    //   .attr("value", function(d) {return d.country_or_region})
-    //   // Want text to say [Country]'s Happiness Score over the Last 5 Years
-
     // Update the y-axis
     y = d3.scaleLinear()
       .domain([0, d3.max(dataFilter, d => d.overall_rank)])
@@ -156,7 +141,6 @@ d3.csv("static/cleaned_all.csv", function(allData) {
         .x(function(d) { return x(d.year) })
         .y(function(d) { return y(d.overall_rank) })
       )
-      .attr("stroke", "black")
     
     circles
       .data(dataFilter)
