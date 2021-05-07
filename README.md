@@ -24,6 +24,10 @@ The code for these items can be viewed in the [app.py](app.py) file.
 
 ### Visualizations and App Pages
 Our final App includes the following pages:
-1. Homepage ![Homepage](images/homepage.png)
+1. **Homepage** ![Homepage](images/homepage.png)
+2. **Happiness by Country** ![happiness_by_country](images/happiness_by_country.png)
+3. **Happiness: The Last 5 Years** ![happiness_last_5_years](images/happiness_last_5_years.png)
+4. **Final Data** ![final_data](images/raw_data.png)
+5. **ArcGIS Example** ![arcGIS](images/arcGIS.png)
 
 ## Conclusions
