@@ -25,9 +25,15 @@ The code for these items can be viewed in the [app.py](app.py) file.
 ### Visualizations and App Pages
 Our final App includes the following pages:
 1. **Homepage** ![Homepage](images/homepage.png)
-2. **Happiness by Country** ![happiness_by_country](images/happiness_by_country.png)
+    Code for this page can be viewed in the following files: [index.html](templates/index.html) and [styles.css](static/css/styles.css)
+2. **Happiness by Country** ![happiness_by_country](images/happiness_by_country.png) 
+    Code for this page can be viewed in the following files: [logic_2015.js](static/js/logic_2015.js), [happiness_by_country.html](templates/happiness_by_country.html)
 3. **Happiness: The Last 5 Years** ![happiness_last_5_years](images/happiness_last_5_years.png)
+    *Happiness by Country** ![happiness_by_country](images/happiness_by_country.png) 
+    Code for this page can be viewed in the following files: [yearlyPlot.js](static/js/yearlyPlot.js), (the_last_5_years.html)[templates/the_last_5_years.html]
 4. **Final Data** ![final_data](images/raw_data.png)
+    Code for this page can be viewed within the [app.py](app.py) file. 
 5. **ArcGIS Example** ![arcGIS](images/arcGIS.png)
+    Code for this page can be viewed within the [drews_page.html](templates/drews_page.html)
 
 ## Conclusions
