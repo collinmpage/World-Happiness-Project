@@ -23,6 +23,7 @@ The code for these items can be viewed in the [app.py](app.py) file.
 
 
 ### Visualizations and App Pages
-
+Our final App includes the following pages:
+1. Homepage ![Homepage](images/homepage.png)
 
 ## Conclusions
