@@ -123,13 +123,15 @@ d3.csv("static/cleaned_all.csv", function(allData) {
     var dataFilter = allData.filter(function(d){return d.country_or_region==selectedGroup})
 
     // Update the y-axis
-    y = d3.scaleLinear()
+    y
       .domain([0, d3.max(dataFilter, d => d.overall_rank)])
       .range([ height, 0 ]);
     svg.select(".y-axis")
       .selectAll("g")
       .remove()
-    svg.append("g")
+    svg.select(".y-axis")
+      .append("g")
+      .style("font", "14px sans-serif")
       .call(d3.axisLeft(y));
 
     // Give these new data to update line
