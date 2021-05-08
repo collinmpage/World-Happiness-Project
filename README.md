@@ -43,3 +43,6 @@ Our final App includes the following pages:
     Code for this page can be viewed within the [drews_page.html](templates/drews_page.html)
 
 ## Conclusions
+While we saw some variance over time of how countries ranked, there wasn't any significant movement over this time period. Countries tend to stay around the same rank.
+
+Additionally, while this data and the visualizations provide a great view of a Country's happiness over the past 5 years, it is important to remember the source of the data is a poll and inherently bias.
