@@ -4,7 +4,7 @@ Creating and Presenting world happiness Data using JavaScript and other front en
 ## Overview
 In this project, we used a dataset from Kaggle on World Happiness which can be seen [here](https://www.kaggle.com/unsdsn/world-happiness). We created a web app that includes an interactive line chart, an interactive map, the full data, and an ArcGIS example.
 
-### ETl Process
+### ETL Process
 In jupyter notebook, we loaded in the original CSVs [found here](Data). With each CSV, we used python pandas to delete columns that were deemed unecessary, rename and reorder the columns that we wanted to keep in order to normalize each dataset. Finally, we added these dataframes to sql tables and exported them to a sqlite file. ![ETL](images/ETL_Process.png)
 
 Additionally, we imported the CSVs and a JSON file in order to combine the two. In jupyter notebook, we used nested for loops to create a list of lists to incorporate the CSV into the GeoJSON file. Finally, we exported this new combined data to a GeoJSON file. ![ETL_GeoJSON](images/ETL_GeoJSON.png)
